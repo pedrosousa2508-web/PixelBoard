@@ -15,6 +15,7 @@ import com.akshaykadam.pixelboard.patches.shared.stringOption
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.akshaykadam.pixelboard.patches.gboard.features.advancedvoice.gboardAdvancedVoiceFeatureMarkerPatch
+import com.akshaykadam.pixelboard.patches.gboard.features.clipboard.gboardClipboard100kFlagValuePatch
 import com.akshaykadam.pixelboard.patches.gboard.features.packagerename.applyGboardApplicationDisplayName
 import com.akshaykadam.pixelboard.patches.gboard.features.packagerename.gboardPackageRenameResourcePatch
 import com.akshaykadam.pixelboard.patches.gboard.features.packagerename.isValidGboardAppDisplayName
@@ -83,6 +84,19 @@ val gboardAiWritingToolsPatch = gboardPublicResourcePatch(
     )
 }
 
+/**
+ * Independent opt-in patch; changes only the stock text_clip_item_char_limit Long flag.
+ * Defaults to enabled in this fork and preserves the stock value on incompatible flags.
+ */
+val gboardClipboard100kPatch = resourcePatch(
+    name = "Clipboard 100K Character Limit",
+    description = "Allow up to 100,000 UTF-16 characters per Gboard text clipboard history item.",
+    default = true,
+) {
+    compatibleWith(COMPATIBILITY_GBOARD)
+    dependsOn(gboardClipboard100kFlagValuePatch)
+}
+
 val gboardSignatureBypassPatch = gboardPublicResourcePatch(
     featureId = "add_gboard_signature_bypass",
     name = "Add Gboard Signature Bypass",
@@ -140,6 +154,7 @@ object GboardPublishedPatchCatalog {
     val publishedRegistrations: Set<Patch<*>> = linkedSetOf(
         gboardAdvancedVoiceTypingPatch,
         gboardAiWritingToolsPatch,
+        gboardClipboard100kPatch,
         gboardSignatureBypassPatch,
         gboardPackageRenamePatch,
     ).filterTo(linkedSetOf()) { patch -> patch.name != null }
