@@ -15,9 +15,6 @@
                 "options": {
                     "app_display_name": "PixelBoard"
                 }
-            },
-            "Clipboard 100K Character Limit": {
-                "enabled": true
             }
         }
     }
