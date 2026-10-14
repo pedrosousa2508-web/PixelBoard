@@ -13,7 +13,7 @@ class GboardPublishedPatchCatalogContractTest {
         val registrations = GboardPublishedPatchCatalog.publishedRegistrations
 
         assertTrue(registrations.isNotEmpty())
-        assertEquals(4, registrations.size)
+        assertEquals(5, registrations.size)
         assertEquals(registrations.size, registrations.map { patch -> patch.name }.distinct().size)
         assertSame(
             gboardAdvancedVoiceTypingPatch,
@@ -22,6 +22,10 @@ class GboardPublishedPatchCatalogContractTest {
         assertSame(
             gboardAiWritingToolsPatch,
             registrations.single { patch -> patch.name == "AI Writing Tools" },
+        )
+        assertSame(
+            gboardClipboard100kPatch,
+            registrations.single { patch -> patch.name == "Clipboard 100K Character Limit" },
         )
         assertSame(
             gboardSignatureBypassPatch,
