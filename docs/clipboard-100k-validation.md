@@ -26,9 +26,9 @@ limits in Gboard storage, Binder transactions, or target apps may exist.
 
 1. Run `cd pixelboard-patches && ./gradlew test`.
 2. Run `cd pixelboard-patches && ./gradlew :patches:buildAndroid`.
-3. Supply the compatible licensed stock base at `input/gboard.apk`; compile
+3. Rebuild the bundle with `./build.sh --rebuild` (the checked-in binary\n   `patches/PixelBoard.mpp` is still the original and does not contain the new patch).\n4. Supply the compatible licensed stock base at `input/gboard.apk`; compile
    and sign the patched APK using the project's established build procedure.
-4. Verify that the patcher reports the clipboard patch as applied, with no
+5. Verify that the patcher reports the clipboard patch as applied, with no
    missing classes or changed flag getter fingerprint. If it fails, do **not**
    install the APK. Use the stock keyboard until analyzed.
 
