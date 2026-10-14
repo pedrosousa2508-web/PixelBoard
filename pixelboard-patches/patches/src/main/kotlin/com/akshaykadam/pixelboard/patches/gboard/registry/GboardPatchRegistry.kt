@@ -88,7 +88,8 @@ val gboardAiWritingToolsPatch = gboardPublicResourcePatch(
  * Independent opt-in patch; changes only the stock text_clip_item_char_limit Long flag.
  * Defaults to enabled in this fork and preserves the stock value on incompatible flags.
  */
-val gboardClipboard100kPatch = resourcePatch(
+val gboardClipboard100kPatch = gboardPublicResourcePatch(
+    featureId = "clipboard_100k",
     name = "Clipboard 100K Character Limit",
     description = "Allow up to 100,000 UTF-16 characters per Gboard text clipboard history item.",
     default = true,
