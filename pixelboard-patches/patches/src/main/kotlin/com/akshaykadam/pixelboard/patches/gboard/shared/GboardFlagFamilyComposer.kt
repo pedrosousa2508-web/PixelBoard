@@ -37,6 +37,11 @@ internal enum class GboardFlagFamilyFeature(
         300,
         RuntimeCallId.AI_WRITING_TOOLS_RUNTIME_APPLY_OVERRIDDEN_FLAG_VALUE,
         GboardFlagFamilyArgumentShape.RECEIVER_AND_RESULT,
+    ),
+    CLIPBOARD_100K(
+        400,
+        RuntimeCallId.CLIPBOARD_100K_RUNTIME_APPLY_OVERRIDDEN_FLAG_VALUE,
+        GboardFlagFamilyArgumentShape.RECEIVER_AND_RESULT,
     );
 
     val spec: GboardFlagFamilyFeatureSpec
